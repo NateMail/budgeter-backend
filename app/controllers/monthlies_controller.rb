@@ -47,6 +47,6 @@ class MonthliesController < ProtectedController
 
     # Only allow a trusted parameter "white list" through.
     def monthly_params
-      params.require(:monthly).permit(:income, :deposited)
+      params.require(:monthly).permit(:income, :deposited, :user_id)
     end
 end

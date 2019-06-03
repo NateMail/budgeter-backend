@@ -1,21 +1,22 @@
-class BillsController < ApplicationController
+class BillsController < ProtectedController
   before_action :set_bill, only: [:show, :update, :destroy]
 
   # GET /bills
   def index
-    @bills = Bill.all
+    @bills = current_user.bills.all
 
     render json: @bills
   end
 
   # GET /bills/1
   def show
+    @bills = current_user.bills.find(params[:id])
     render json: @bill
   end
 
   # POST /bills
   def create
-    @bill = Bill.new(bill_params)
+    @bill = current_user.bills.build(bill_params)
 
     if @bill.save
       render json: @bill, status: :created, location: @bill
@@ -41,11 +42,11 @@ class BillsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_bill
-      @bill = Bill.find(params[:id])
+        @bill = current_user.bills.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def bill_params
-      params.require(:bill).permit(:name, :amount, :due)
+      params.require(:bill).permit(:name, :amount, :due, :user_id)
     end
 end

@@ -3,4 +3,5 @@
 class User < ApplicationRecord
   include Authentication
   has_many :monthly
+  has_many :bills
 end
