@@ -33,6 +33,7 @@ right times.  If I got stuck on a route or displaying something at the right tim
 plug and play until I was able to get the correct response I needed.
 
 ### ERD
+https://imgur.com/a/BcZZw1J
 
 ### Paths
 | Verb | URL | Route |
